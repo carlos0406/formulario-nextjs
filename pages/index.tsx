@@ -55,8 +55,7 @@ export default function Home() {
       cpf,
       empresa
     }
-    let cpfteste=cpf.replace(".","")
-    cpfteste=cpfteste.replace(".","")
+    let cpfteste=cpf.replaceAll(".","")
     cpfteste=cpfteste.replace("-","")
     const cpfValido=testarCPF(cpfteste)
     
