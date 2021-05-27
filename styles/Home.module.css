@@ -1,10 +1,20 @@
-.container {
+.container form {
   min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.container form input, .container form button {
+  height: 2.5rem;
+  width: 20rem;
+  border-radius: 15px;
+
+}
+.container form button{
+  margin-top: 1rem;
 }
 
 .main {
