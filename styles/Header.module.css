@@ -1,10 +1,13 @@
 
 .header{
-    height: 5rem;
+    height: 6rem;
     background: #191622;
     font:4rem  Roboto ;
     color: #fff;
     font-weight: 700;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:2rem;
     border-bottom: 1px solid #fff;
 }

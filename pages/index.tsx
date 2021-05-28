@@ -88,36 +88,44 @@ export default function Home() {
     <Header/>
     <div className={styles.container}>
       <form onSubmit={onHandleSubmit} >
-        <label >Nome:</label>
-        <input
+        <label htmlFor="nome">Nome :</label>
+        <input id="nome"
          type="text"
          value={nome} 
          placeholder="Por favor digite o nome da pessoa"
          onChange={e => setNome(e.target.value)} 
         />
-        <label >CPF:</label>
+        <label htmlFor="cpf">CPF :</label>
         <span>
-          <Input  value={cpf} onChange={e => setCpf(e.target.value)} />
+          <Input
+           id="cpf"
+          placeholder="Por favor digite o CPF da pessoa"
+          value={cpf}
+          onChange={e => setCpf(e.target.value)} />
           <button type="button" onClick={()=>setCpf('')}>
             Limpar
           </button>
           </span>
-        <label>Empresa:</label>
+        <label htmlFor="empresa">Empresa :</label>
 
-        <select
+        <select id="empresa"
          value={empresa}
          onChange={e => setEmpresa(e.target.value)}
         >
-          <option  value=""disabled>SELECIONE UMA EMPRESA</option>  
+          <option  value=""disabled>--SELECIONE UMA EMPRESA--</option>  
           <option value="Empresa 1">Empresa 1</option>
           <option value="Empresa 2">Empresa 2</option>
           <option value="Empresa 3">Empresa 3</option>
           <option value="Empresa 4">Empresa 4</option>
           <option value="Empresa 5">Empresa 5</option>
           <option value="Empresa 6">Empresa 6</option>
+          <option value="Empresa 7">Empresa 7</option>
+          <option value="Empresa 8">Empresa 8</option>
+          <option value="Empresa 9">Empresa 9</option>
+          <option value="Empresa 10">Empresa 10</option>
         </select>
         <button type="submit" >
-          Enviar
+          CADASTRAR
         </button>
 
         {pessoas.length>0&&(
