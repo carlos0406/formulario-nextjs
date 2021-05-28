@@ -11,3 +11,12 @@
     padding:2rem;
     border-bottom: 1px solid #fff;
 }
+
+@media (max-width: 1010px) {
+    .header{
+     height: 4rem;
+     font-size:2rem;
+     min-width: 100vw;
+     width: 100%;
+    }
+}
