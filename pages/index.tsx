@@ -1,7 +1,7 @@
 import {FormEvent, useState } from 'react';
 import styles from '../styles/Home.module.css'
 import {Input} from '../src/components/InputMask'
-
+import {Header} from '../src/components/Header'
 export default function Home() {
   const [nome, setNome] = useState('')
   const [cpf, setCpf] = useState('')
@@ -43,7 +43,7 @@ export default function Home() {
       return true;
   }
 
-  function handleDelete(cpf){
+  function handleDelete(cpf:String){
     setPessoas([...pessoas.filter(pessoa=>pessoa.cpf!==cpf)]);
     return true;
   }
@@ -55,6 +55,7 @@ export default function Home() {
       cpf,
       empresa
     }
+
     let cpfteste=cpf.replaceAll(".","")
     cpfteste=cpfteste.replace("-","")
     const cpfValido=testarCPF(cpfteste)
@@ -66,40 +67,62 @@ export default function Home() {
       if(cpfExistente.length >0){
         window.alert("CPF já cadastrado,Por favor mude o valor")
       }else{
+       if(!nome){
+         window.alert("Por favor digite um nome")
+       }else if(!empresa){
+         window.alert("Por favor selecione uma empresa")
+         
+       }else{
         setPessoas([...pessoas, pessoa])
-        window.alert("Cadastro realizado")
+        setCpf('')
+        setNome('')
+        setEmpresa('')
+       }
       }
      
     }
     
   }
   return (
+    <>
+    <Header/>
     <div className={styles.container}>
       <form onSubmit={onHandleSubmit} >
-        <label htmlFor="">Nome</label>
-        <input type="text" value={nome} onChange={e => setNome(e.target.value)} />
-        <label htmlFor="">CPF</label>
+        <label >Nome:</label>
+        <input
+         type="text"
+         value={nome} 
+         placeholder="Por favor digite o nome da pessoa"
+         onChange={e => setNome(e.target.value)} 
+        />
+        <label >CPF:</label>
         <span>
           <Input  value={cpf} onChange={e => setCpf(e.target.value)} />
           <button type="button" onClick={()=>setCpf('')}>
             Limpar
           </button>
           </span>
-        <label htmlFor="">Empresa</label>
+        <label>Empresa:</label>
 
-        <select name="" id="" value={empresa} onChange={e => setEmpresa(e.target.value)}>
-          <option value="Empresa1">Empresa1</option>
-          <option value="Empresa2">Empresa2</option>
-          <option value="Empresa3">Empresa3</option>
-          <option value="Empresa4">Empresa4</option>
-          <option value="Empresa5">Empresa5</option>
-          <option value="Empresa6">Empresa6</option>
+        <select
+         value={empresa}
+         onChange={e => setEmpresa(e.target.value)}
+        >
+          <option  value=""disabled>SELECIONE UMA EMPRESA</option>  
+          <option value="Empresa 1">Empresa 1</option>
+          <option value="Empresa 2">Empresa 2</option>
+          <option value="Empresa 3">Empresa 3</option>
+          <option value="Empresa 4">Empresa 4</option>
+          <option value="Empresa 5">Empresa 5</option>
+          <option value="Empresa 6">Empresa 6</option>
         </select>
-        <button>
+        <button type="submit" >
           Enviar
         </button>
 
-        <div>
+        {pessoas.length>0&&(
+          <div>
+          <h1>Listagem de pessoas Cadastradas</h1>
           <table >
             <thead>
               <tr>
@@ -128,9 +151,11 @@ export default function Home() {
             </tbody>
           </table>
         </div>
+        )}
       </form>
 
 
     </div>
+    </>
   )
 }
