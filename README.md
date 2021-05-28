@@ -3,10 +3,15 @@ Esse é um projeto [Next.js](https://nextjs.org/) Iniciado com  [`create-next-ap
 ## Iniciando
 
 Depois do download do projeto é importante entrar na pasta do projeto e rodar um dos seguintes comandos:
-
+```bash
+npm i
+# ou
+yarn 
+```
+Em seguida você pode rodar um dos comandos a seguir para iniciar o projeto
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
 ```
 # 
